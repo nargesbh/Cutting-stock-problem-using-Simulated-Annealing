@@ -1,48 +1,78 @@
-# Cutting Stock Problem Solver using Simulated Annealing
+# README for Jupyter Notebook Code
 
-This repository contains a Python implementation for solving the Cutting Stock Problem using the Simulated Annealing algorithm. The Cutting Stock Problem is a combinatorial optimization problem often encountered in manufacturing and logistics, where you need to determine the most efficient way to cut large rolls of material (e.g., paper, steel) into smaller pieces to satisfy customer orders while minimizing waste.
+This repository contains Jupyter Notebook code for solving the Stock Cutting Optimization problem using Simulated Annealing. The problem involves finding the optimal way to cut a list of items with varying lengths from stock of a fixed length, with the goal of minimizing the number of stock pieces used.
 
-## Problem Description
+## Table of Contents
+- [Introduction](#introduction)
+- [Prerequisites](#prerequisites)
+- [Usage](#usage)
+- [Code Structure](#code-structure)
+- [Test Cases](#test-cases)
+- [Parameter Tuning](#parameter-tuning)
+- [Conclusion](#conclusion)
 
-The Cutting Stock Problem involves:
+## Introduction
+Stock Cutting Optimization is a combinatorial optimization problem where the objective is to determine the optimal way to cut a set of items from a fixed-length stock to minimize waste. This repository provides a Jupyter Notebook implementation of the Simulated Annealing algorithm to solve this problem.
 
-1. A set of **orders**, each specifying the length and quantity of pieces required.
-2. A set of **raw rolls** of a fixed length, from which the required pieces must be cut.
-3. The goal is to find the **cutting patterns** that minimize waste while meeting all order requirements.
+## Prerequisites
+Before using this code, ensure you have the following libraries installed:
+- `random`
+- `math`
+- `numpy`
+- `pandas`
+- `matplotlib`
 
-## Algorithm Used
-
-The Cutting Stock Problem is solved using the Simulated Annealing algorithm:
-
-1. **Initial Solution**: The algorithm starts with an initial solution, which is a set of cutting patterns. Initially, it may not be optimal.
-
-2. **Cost Function**: A cost function is defined to measure the efficiency of a solution. In this case, it quantifies the amount of waste generated.
-
-3. **Simulated Annealing**: The algorithm uses Simulated Annealing, a probabilistic optimization technique, to explore and exploit the solution space. It iteratively makes small changes to the cutting patterns and accepts these changes based on the change in the cost function and a temperature schedule.
-
-4. **Temperature Schedule**: The temperature schedule controls the probability of accepting worse solutions initially and gradually reduces the probability as the algorithm progresses. This allows the algorithm to escape local optima.
-
-5. **Termination**: The algorithm terminates when a stopping criterion is met, such as reaching a maximum number of iterations or a sufficiently low temperature.
-
-## Parameters
-
-- `initial_solution`: The initial set of cutting patterns.
-- `temperature_schedule`: The schedule for reducing the temperature in the Simulated Annealing process.
-- Other parameters and constraints specific to your implementation.
+You can install these libraries using pip:
+```
+pip install numpy pandas matplotlib
+```
 
 ## Usage
+1. Clone this repository to your local machine:
+```
+git clone https://github.com/your-username/stock-cutting-optimization.git
+```
 
-To use this algorithm, follow these steps:
+2. Navigate to the project directory:
+```
+cd dir_path
+```
 
-1. Clone this repository to your local machine.
+3. Open the Jupyter Notebook file using Jupyter Notebook or Jupyter Lab.
 
-2. Install the required Python libraries, if any, as mentioned in the repository.
+4. Run the code cells in the notebook with your desired input file and parameters. For example, edit and run the following cell:
+```
+Ts, all_costs, best_ans, iteration_num = main('input1.stock', 0.88, 30)
+```
+#### Input Parameters
+- `input1.stock`: The input file containing problem data.
+- `0.88`: The alpha parameter for controlling the cooling schedule.
+- `30`: The initial temperature parameter (T) for simulated annealing.
 
-3. Prepare your problem instance, specifying the orders and raw rolls.
+#### Execution
+The code will:
+- Execute and provide the best solution found.
+- Display the corresponding cost.
+- Show the number of iterations.
+- Generate a plot illustrating how the cost changes with temperature.
 
-4. Modify the parameters and constraints in the code to match your specific problem.
+#### Code Structure
+- **`HW4.ipynb`**: The Jupyter Notebook containing the code for solving the Stock Cutting Optimization problem using Simulated Annealing.
+- **`input_maker(path)`**: Reads the input file and extracts the required data.
+- **`cost(a)`**: Calculates the cost (number of stock pieces) for a given order.
+- **`neighborhood_func(a)`**: Generates a neighboring solution by swapping two random indices in the order.
+- **`neighborhood_func2(a)`**: Generates a neighboring solution by swapping the values of three random indices in the order.
+- **`move_check(dc)`**: Determines whether to accept a neighbor solution based on the change in cost and current temperature.
+- **`main(path, alpha, t)`**: The main algorithm that performs simulated annealing and returns the results.
+- **`main2(path, alpha, t)`**: An alternative version of the main algorithm with a different approach to temperature updating.
+- **Plotting functions**: Code for plotting the cost vs. temperature graph.
 
-5. Run the code by executing the Python script.
+#### Test Cases
+This code includes several test cases (`input1.stock`, `input2.stock`, `input3.stock`, `input4.stock`) to demonstrate its functionality. Each test case represents a different instance of the Stock Cutting Optimization problem. (Test cases can be found in HW.pdf)
 
-6. The algorithm will apply Simulated Annealing to find the optimal cutting patterns that minimize waste while meeting all order requirements.
+#### Parameter Tuning
+You can experiment with different values for the `alpha` (cooling rate) and `t` (initial temperature) parameters to observe their effects on the solution quality and convergence speed. The provided test cases have shown that appropriate parameter values can significantly impact the algorithm's performance.
+
+#### Conclusion
+Simulated Annealing is a powerful optimization technique for solving combinatorial optimization problems like Stock Cutting. With proper parameter tuning, it can efficiently find near-optimal solutions. This repository provides a flexible implementation for solving such problems.
 
