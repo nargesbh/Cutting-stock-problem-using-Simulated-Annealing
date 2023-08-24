@@ -68,7 +68,7 @@ The code will:
 - **Plotting functions**: Code for plotting the cost vs. temperature graph.
 
 #### Test Cases
-This code includes several test cases (`input1.stock`, `input2.stock`, `input3.stock`, `input4.stock`) to demonstrate its functionality. Each test case represents a different instance of the Stock Cutting Optimization problem. (Test cases can be found in HW.pdf)
+This code includes several test cases (`input1.stock`, `input2.stock`, `input3.stock`, `input4.stock`) to demonstrate its functionality. Each test case represents a different instance of the Stock Cutting Optimization problem. (Test cases can be found in HW4.pdf)
 
 #### Parameter Tuning
 You can experiment with different values for the `alpha` (cooling rate) and `t` (initial temperature) parameters to observe their effects on the solution quality and convergence speed. The provided test cases have shown that appropriate parameter values can significantly impact the algorithm's performance.
