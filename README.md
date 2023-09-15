@@ -1,4 +1,4 @@
-# README for Jupyter Notebook Code
+![stock](problem.png)
 
 This repository contains Jupyter Notebook code for solving the Stock Cutting Optimization problem using Simulated Annealing. The problem involves finding the optimal way to cut a list of items with varying lengths from stock of a fixed length, with the goal of minimizing the number of stock pieces used.
 
